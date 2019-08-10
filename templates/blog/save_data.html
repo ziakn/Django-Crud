@@ -1,0 +1,46 @@
+{%extends 'blog/base.html'%}
+
+{%block content%}
+<form method="post" action="{% url 'blog:save_data' %}">
+{%csrf_token%}
+    <input type="text" name="cost">
+    <!--<input type="text" name="date" value="{% now 'Y-m-d' %}">-->
+    <input type="submit" value="save">
+</form>
+
+<br/>
+
+<div class="row">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  {%for s in show%}
+    <tr>
+      <th scope="row">{{s.id}}</th>
+      <td>{{s.cost}}</td>
+      <td>{{s.date}}</td>
+      <td>
+           <a href="{% url 'blog:edit_save_data'  id=s.id%}">
+          <button type="button" class="btn btn-warning">Edit</button>
+               </a>
+      </td>
+        <td>
+            <a href="{% url 'blog:delete_save_data'  id=s.id%}">
+    <button type="button" class="btn btn-outline-danger">Delete</button>
+        </a>
+
+        </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

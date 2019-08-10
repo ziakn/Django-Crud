@@ -1,0 +1,16 @@
+{%extends 'blog/base.html'%}
+{%block content%}
+
+<form action="" method="post" enctype="multipart/form-data">
+      {%csrf_token%}
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" name="cost" value="{{show.cost}}">
+  </div>
+  <div class="form-group">
+    <label >Date</label>
+    <input type="text" class="form-control" name="date" value="{{show.date}}">
+  </div>
+    <input type="submit" value="SaveChanges" class="btn btn-outline-success">
+</form>
+{% endblock %}
